@@ -1,44 +1,354 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rakesh Bandeppa's GitHub Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeppa gari Rakesh - Software Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --background-light: #f8f9fa;
+            --text-light: #212529;
+            --primary-light: #007bff;
+            --card-light: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+
+            --background-dark: #121212;
+            --text-dark: #e0e0e0;
+            --primary-dark: #1a73e8;
+            --card-dark: #1e1e1e;
+            --shadow-dark: rgba(255, 255, 255, 0.1);
+
+            --background: var(--background-light);
+            --text-color: var(--text-light);
+            --primary-color: var(--primary-light);
+            --card-bg: var(--card-light);
+            --shadow-color: var(--shadow-light);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--background);
+            margin: 0;
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        h1 {
-            color: #333;
+        .dark-mode {
+            --background: var(--background-dark);
+            --text-color: var(--text-dark);
+            --primary-color: var(--primary-dark);
+            --card-bg: var(--card-dark);
+            --shadow-color: var(--shadow-dark);
         }
 
-        p {
-            font-size: 18px;
-            color: #666;
-        }
-
-        a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
             transition: background-color 0.3s;
         }
 
-        a:hover {
-            background-color: #0056b3;
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        header p {
+            margin: 10px 0;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        header a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .job {
+            background: var(--background);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .job-title {
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        .company {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            float: right;
+            font-weight: 300;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--background);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .skill-category h3 {
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-image: linear-gradient(45deg, #1a73e8, #007bff);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 300;
+        }
+
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+        }
+
+        .theme-switch input { display:none; }
+
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Rakesh Bandeppa's GitHub Profile</h1>
-    <p>Check out my repositories and contributions on GitHub!</p>
-    <a href="https://github.com/rakeshbandeppa">Visit My GitHub Profile</a>
+    <div class="container">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+
+        <header>
+            <h1>Bandeppa gari Rakesh</h1>
+            <p>Software developer | Security researcher | Firmware engineer</p>
+            <p>
+                <a href="mailto:rakesh.bandeppa@gmail.com">rakesh.bandeppa@gmail.com</a> |
+                +91 6300918335 |
+                <a href="https://rakesh.co.in" target="_blank">rakesh.co.in</a> |
+                <a href="https://github.com/rakeshbandeppa" target="_blank">GitHub</a>
+            </p>
+        </header>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p>Java, Python, Go, C/C++, SQL, MongoDB, JavaScript, HTML/CSS</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <p>React, FastAPI, Django, Spring Boot, pandas, NumPy, Matplotlib, PyTorch</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & Architecture</h3>
+                    <p>AWS (Connect, Lex, Lambda, API Gateway), Microservices, Event-driven Architecture</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <p>GPIO, ADC, SPI, UART, I2C, Timers, Watch dog, CAN, UDS and CAN-FD protocols</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Additional Skills</h3>
+                    <p>Git, Docker, CI/CD, GitHub Copilot, WebSockets, Multiprocessing, Multi-threading, ChatGPT, Penetration Testing</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="job">
+                <span class="date">Mar 2023 - Present</span>
+                <div class="job-title">Firmware Developer</div>
+                <div class="company">Ather Energy, Bengaluru</div>
+                <ul>
+                    <li>Worked with GPIO, ADC, SPI, UART, I2C, Timers, Watch dog, CAN, UDS and CAN-FD on CYT2B7, S32k144 and C2000.</li>
+                    <li>Designed and implemented smart features for Ather electric vehicles, including Auto Hold, Traction Control, Fall Detection, Theft/Tow Detection, and other Ather Stack features.</li>
+                    <li>Worked in the implementation of Smart ECO and vehicle features like indicators, tail lamps, and head lamps operation.</li>
+                    <li>Developed an in-house PCAN-USB adapter for seamless CAN network connectivity.</li>
+                    <li>Contributed to the Ather Software Development Kit (ASDK).</li>
+                    <li>Developed a HIL(Hardware-in-the-Loop) Setup.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <span class="date">June 2022 - Feb 2023</span>
+                <div class="job-title">Backend Developer</div>
+                <div class="company">Ather Energy, Bengaluru</div>
+                <ul>
+                    <li>Led the development of the Ather Diagnostic Tool.</li>
+                    <li>Implemented Role-Based Access Control (RBAC) using FastAPI, Spring Boot and MongoDB.</li>
+                    <li>Worked on Automation and Improvement of the Ather Factory flow.</li>
+                    <li>Optimized communication between vehicles and systems using WebSockets, Multiprocessing, and Multithreading.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <span class="date">Jan 2022 - June 2022</span>
+                <div class="job-title">Software Developer (Intern)</div>
+                <div class="company">HashedIn by Deloitte, Bengaluru</div>
+                <ul>
+                    <li>Designed and developed a microservices-based call center application using AWS Connect and Spring Boot.</li>
+                    <li>Implemented AWS Lex chatbot for automated customer service.</li>
+                    <li>Leveraged AWS services (Lambda, API Gateway, DynamoDB) to build a scalable and reliable backend infrastructure.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="patents">
+            <h2>Patents Filed</h2>
+            <ul>
+                <li>Multi Mode Traction control</li>
+                <li>Method to detect Handle Lock Tampering</li>
+                <li>Method to detect Cyclic Error in Measurement of Wheel Speed</li>
+                <li>Vehicle CAN data Standarisation based on IoT & Telementry data requirements</li>
+                <li>A novel Arrangement of a sensor Array and Associated method to determine the State of a two-wheeler ride</li>
+                <li>Method to Detect Faulty Toner Ring</li>
+            </ul>
+        </section>
+
+        <section id="achievements">
+            <h2>Achievements & Recognitions</h2>
+            <ul>
+                <li><b>Hall of Fame | Tirupathi Tirumala Devasthanam (2021):</b> Discovered and reported critical vulnerabilities in the ticket booking system.</li>
+                <li><b>Hall of Fame | Mohan Babu University (2020):</b> Identified and resolved SQL injection vulnerabilities in the college payment system.</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Notable Projects</h2>
+            <div class="job">
+                <span class="date">June 2020 - Mar 2021</span>
+                <div class_="job-title">NIVA — University Main Website</div>
+                <ul>
+                    <li>Collaborated on the development of the college's main website, focusing on back-end functionality.</li>
+                    <li>Implemented OAuth for seamless student login and integrated Celery and Redis for asynchronous task management.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 40px;">
+             <a href="Rakesh_Bandepa.pdf" class="download-btn" download>Download My Resume (PDF)</a>
+        </div>
+
+        <footer>
+            <p>This page was generated based on my resume. For more details, feel free to download the PDF.</p>
+        </footer>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('checkbox');
+        checkbox.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
